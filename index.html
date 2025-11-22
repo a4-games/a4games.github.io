@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Site UI</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+        }
+
+        header {
+            padding: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            background: #222;
+        }
+
+        .featured {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background: #1b1b1b;
+            border-bottom: 4px solid #333;
+        }
+
+        .featured h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .featured-box {
+            width: 100%;
+            height: 200px;
+            background: #333;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        .library {
+            padding: 20px;
+        }
+
+        .library h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .game-box {
+            background: #222;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        .game-box:hover {
+            transform: scale(1.05);
+            background: #2c2c2c;
+        }
+
+        .game-box img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        .game-title {
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>My Game Site</header>
+
+    <section class="featured">
+        <h2>Featured Game</h2>
+        <div class="featured-box">(Set featured game here)</div>
+    </section>
+
+    <section class="library">
+        <h2>Full Library</h2>
+        <div class="grid">
+            <!-- 50 game boxes -->
+            <!-- You can change img src, title, and link -->
+            
+            <!-- JS will auto-generate 50 boxes -->
+        </div>
+    </section>
+
+    <script>
+        const grid = document.querySelector('.grid');
+
+        for (let i = 1; i <= 50; i++) {
+            const box = document.createElement('a');
+            box.href = 'https://www.google.com';
+            box.target = '_blank';
+            box.className = 'game-box';
+            box.innerHTML = `
+                <img src="https://via.placeholder.com/80" alt="Placeholder Icon" />
+                <div class="game-title">Placeholder Game ${i}</div>
+            `;
+            grid.appendChild(box);
+        }
+    </script>
+</body>
+</html>
