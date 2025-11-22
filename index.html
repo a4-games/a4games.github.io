@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game Site UI</title>
+    <title>a4 G@mes</title>
     <style>
         body {
             margin: 0;
@@ -57,17 +57,18 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 15px;
         }
 
         .game-box {
-            background: #222;
-            padding: 15px;
-            border-radius: 12px;
+            background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+            padding: 30px;
+            border-radius: 22px;
             text-align: center;
             cursor: pointer;
-            transition: transform 0.15s ease, background 0.15s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.45);
         }
 
         .game-box:hover {
@@ -76,50 +77,84 @@
         }
 
         .game-box img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 10px;
-            border-radius: 8px;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 15px;
+            border-radius: 18px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.45);
         }
 
         .game-title {
-            margin-top: 5px;
-            font-size: 1rem;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <header>My Game Site</header>
+    <header>a4 Games</header>
 
     <section class="featured">
         <h2>Featured Game</h2>
-        <div class="featured-box">(Set featured game here)</div>
+        <div class="featured-box">Featured game of December: DELTARUNE.</div>
     </section>
 
     <section class="library">
         <h2>Full Library</h2>
         <div class="grid">
-            <!-- 50 game boxes -->
-            <!-- You can change img src, title, and link -->
-            
-            <!-- JS will auto-generate 50 boxes -->
+            <a href="#/deltarune/index.html" class="game-box"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAMAAAD4oR9YAAAAflBMVEUAAAD///+MjIzMzMxFRUXd3d319fVeXl7r6+u9vb0tLS1OTk6enp6kpKQpKSntHCTGxsbl5eUkJCTrAAD709QTExNra2v72dnT09MJCQmzs7OSkpKCgoI1NTWYmJj++vrsDxb84+N1dXVWVlb6ycvsBAwbGxv+7+/vP0LuNzq+rKXAAAADMUlEQVR4nO3a61raWBiAURDUIAIKhrMgtB1n7v8GB7MDhmFzkAHFdq0fPk2yNR9vyyGNpRIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA2VTrQXXfwjRfWR0Udjbz766nZxzxMiXl4HHfwmq+8Oa5sHOU7yzfnnHEy/SYP/LrfQurN2FhclfYebUMVz/jiJdJuCMJdyThjiTckYQ7knBHEu5I/y/ceBlu74XH9ze/Khona+GerzaNutmh/4T7MXo7VluGu8+WNguHYkbhAuMudmieHUrDVhh1nB+b75utveVc3cZoNElH3fqkeLlzpEo5KoS7jR16iIW7j60M/+4a8TO8aWQL6tvPcped5SaMun45eMBsa4aLcJPH4SQtP4xPcUn4EH9IO8LVYuEmkYXT6vamQR4u9jhDgmYWKw+3/jJywGyb56r8KA2S0X2lK9yu2TbPVbktpdfzRkO4nbNtnqu/CPfYnQyF2znb5rka9VJaS0uTb/UaN33q9XrTci/7Gg133X+TnDHcCX1euKdOp/MyK3c6vzpP8XCDwnrhCuFardbP2a9Wa1u4tnBBJFwn+7IzXOOPCjdKFh5XAyfZZiRcRrj3cGmz3W6nq4v8278Wm+3ia9bh4X7bp2r0kiuI/u9I4c0h79b5uSvcMPtz5dThhl8Srvi5Z7A23OHhpq+9lyzc0+uWjyMh3KBwpzaEy5/5O2erRcIlzcLUxfu/p/DxcKX14Q4OVy6/vizKvbRmqx3RcEXNpLzp8HB3Gz/wdD4z3HTW+7szm01XO4TL7Qm3SPdPp3gW4XJ7wy0uuP7YcINj3xwiPjHcF705JO9uhluHu7Rwa2Pff0m4oh1Ph0sLt3mu7xkuGWfeYwh3WLj8l+6uhftouOwXNdPfI9zHbw+uD3ezN9z77cE83OraaRlu+Yn4W4VrVKLCW2c9dmiSHXp+CFsPhevB0rwfdvaLd/LH/eV31kK44XK7Pw6PM/9R/c1w7dre2frhL2kSma2of3XSbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcyb/sTEOBmExMGAAAAABJRU5ErkJggg==" /><div class="game-title">DELTARUNE</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 2</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 3</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 4</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 5</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 6</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 7</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 8</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 9</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 10</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 11</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 12</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 13</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 14</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 15</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 16</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 17</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 18</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 19</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 20</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 21</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 22</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 23</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 24</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 25</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 26</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 27</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 28</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 29</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 30</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 31</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 32</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 33</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 34</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 35</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 36</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 37</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 38</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 39</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 40</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 41</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 42</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 43</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 44</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 45</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 46</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 47</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 48</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 49</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 50</div></a>
         </div>
     </section>
 
-    <script>
-        const grid = document.querySelector('.grid');
-
-        for (let i = 1; i <= 50; i++) {
-            const box = document.createElement('a');
-            box.href = 'https://www.google.com';
-            box.target = '_blank';
-            box.className = 'game-box';
-            box.innerHTML = `
-                <img src="https://via.placeholder.com/80" alt="Placeholder Icon" />
-                <div class="game-title">Placeholder Game ${i}</div>
-            `;
-            grid.appendChild(box);
-        }
-    </script>
+    
 </body>
 </html>
