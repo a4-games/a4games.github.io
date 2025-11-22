@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>a4 G@mes</title>
+    <title>Game Site UI</title>
     <style>
         body {
             margin: 0;
@@ -92,18 +92,44 @@
     </style>
 </head>
 <body>
-    <header>a4 Games</header>
+    <header>My Game Site</header>
+
+    <!-- Cloak Button -->
+    <div style="text-align:center; padding:15px; background:#181818; border-bottom:3px solid #333;">
+        <button id="cloakBtn" style="padding:12px 20px; font-size:1rem; border:none; border-radius:8px; cursor:pointer; background:#3a3a3a; color:white; transition:0.2s;">
+            Cloak Page
+        </button>
+    </div>
+
+    <script>
+        document.getElementById("cloakBtn").onclick = function () {
+            let newTitle = prompt("Enter new tab title:", "Google Docs");
+            let newIcon = prompt("Enter favicon URL:", "https://upload.wikimedia.org/wikipedia/commons/6/6a/Google_Docs_2020_Logo.svg");
+
+            if (newTitle) document.title = newTitle;
+
+            if (newIcon) {
+                let favicon = document.querySelector("link[rel='icon']");
+                if (!favicon) {
+                    favicon = document.createElement("link");
+                    favicon.rel = "icon";
+                    document.head.appendChild(favicon);
+                }
+                favicon.href = newIcon;
+            }
+        }
+    </script>
 
     <section class="featured">
         <h2>Featured Game</h2>
-        <div class="featured-box">Featured game of December: DELTARUNE.</div>
+        <div class="featured-box">(Set featured game here)</div>
     </section>
 
     <section class="library">
         <h2>Full Library</h2>
         <div class="grid">
-            <a href="/deltarune/" class="game-box"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAMAAAD4oR9YAAAAflBMVEUAAAD///+MjIzMzMxFRUXd3d319fVeXl7r6+u9vb0tLS1OTk6enp6kpKQpKSntHCTGxsbl5eUkJCTrAAD709QTExNra2v72dnT09MJCQmzs7OSkpKCgoI1NTWYmJj++vrsDxb84+N1dXVWVlb6ycvsBAwbGxv+7+/vP0LuNzq+rKXAAAADMUlEQVR4nO3a61raWBiAURDUIAIKhrMgtB1n7v8GB7MDhmFzkAHFdq0fPk2yNR9vyyGNpRIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA2VTrQXXfwjRfWR0Udjbz766nZxzxMiXl4HHfwmq+8Oa5sHOU7yzfnnHEy/SYP/LrfQurN2FhclfYebUMVz/jiJdJuCMJdyThjiTckYQ7knBHEu5I/y/ceBlu74XH9ze/Khona+GerzaNutmh/4T7MXo7VluGu8+WNguHYkbhAuMudmieHUrDVhh1nB+b75utveVc3cZoNElH3fqkeLlzpEo5KoS7jR16iIW7j60M/+4a8TO8aWQL6tvPcped5SaMun45eMBsa4aLcJPH4SQtP4xPcUn4EH9IO8LVYuEmkYXT6vamQR4u9jhDgmYWKw+3/jJywGyb56r8KA2S0X2lK9yu2TbPVbktpdfzRkO4nbNtnqu/CPfYnQyF2znb5rka9VJaS0uTb/UaN33q9XrTci/7Gg133X+TnDHcCX1euKdOp/MyK3c6vzpP8XCDwnrhCuFardbP2a9Wa1u4tnBBJFwn+7IzXOOPCjdKFh5XAyfZZiRcRrj3cGmz3W6nq4v8278Wm+3ia9bh4X7bp2r0kiuI/u9I4c0h79b5uSvcMPtz5dThhl8Srvi5Z7A23OHhpq+9lyzc0+uWjyMh3KBwpzaEy5/5O2erRcIlzcLUxfu/p/DxcKX14Q4OVy6/vizKvbRmqx3RcEXNpLzp8HB3Gz/wdD4z3HTW+7szm01XO4TL7Qm3SPdPp3gW4XJ7wy0uuP7YcINj3xwiPjHcF705JO9uhluHu7Rwa2Pff0m4oh1Ph0sLt3mu7xkuGWfeYwh3WLj8l+6uhftouOwXNdPfI9zHbw+uD3ezN9z77cE83OraaRlu+Yn4W4VrVKLCW2c9dmiSHXp+CFsPhevB0rwfdvaLd/LH/eV31kK44XK7Pw6PM/9R/c1w7dre2frhL2kSma2of3XSbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACcyb/sTEOBmExMGAAAAABJRU5ErkJggg==" /><div class="game-title">DELTARUNE</div></a>
-            <a href="/omori/" class="game-box"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4d576b4d-1b71-499d-89b8-329417951fcc/ditehe3-5e441679-0aae-4a6b-9206-07b26643d5c6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi80ZDU3NmI0ZC0xYjcxLTQ5OWQtODliOC0zMjk0MTc5NTFmY2MvZGl0ZWhlMy01ZTQ0MTY3OS0wYWFlLTRhNmItOTIwNi0wN2IyNjY0M2Q1YzYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.EnLK5VbwfOPtEt7K3urqGoSQUQvtEV0aqkIcjTC4vfU" /><div class="game-title">OMORI</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 1</div></a>
+            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 2</div></a>
             <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 3</div></a>
             <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 4</div></a>
             <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 5</div></a>
@@ -158,4 +184,5 @@
     
 </body>
 </html>
+
 
