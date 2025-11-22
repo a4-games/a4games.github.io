@@ -96,15 +96,109 @@
 
     <!-- Cloak Button -->
     <div style="text-align:center; padding:15px; background:#181818; border-bottom:3px solid #333;">
-        <button id="cloakBtn" style="padding:12px 20px; font-size:1rem; border:none; border-radius:8px; cursor:pointer; background:#3a3a3a; color:white; transition:0.2s;">
+        <button id="cloakOpen" style="padding:12px 20px; font-size:1rem; border:none; border-radius:8px; cursor:pointer; background:#3a3a3a; color:white; transition:0.2s;">
             Cloak Page
         </button>
     </div>
 
+    <!-- Cloak Popup -->
+    <div id="cloakModal" class="cloak-modal">
+        <div class="cloak-content">
+            <h2>Cloak Settings</h2>
+
+            <label>Tab Title:</label>
+            <input id="cloakTitle" type="text" placeholder="Google Docs" />
+
+            <label>Favicon URL:</label>
+            <input id="cloakIcon" type="text" placeholder="https://via.placeholder.com/64" />
+
+            <h3>Presets</h3>
+            <button class="preset-btn" data-title="Google Docs" data-icon="https://upload.wikimedia.org/wikipedia/commons/6/6a/Google_Docs_2020_Logo.svg">Google Docs</button>
+            <button class="preset-btn" data-title="Google" data-icon="https://www.google.com/favicon.ico">Google</button>
+
+            <div class="cloak-actions">
+                <button id="cloakApply">Apply</button>
+                <button id="cloakClose">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .cloak-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+        }
+        .cloak-content {
+            background: #222;
+            padding: 25px;
+            width: 350px;
+            border-radius: 14px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .cloak-content h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .cloak-content input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 12px;
+            background: #333;
+            color: white;
+        }
+        .preset-btn {
+            padding: 8px 12px;
+            background: #444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        .cloak-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .cloak-actions button {
+            padding: 10px 15px;
+            border: none;
+            background: #555;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+
     <script>
-        document.getElementById("cloakBtn").onclick = function () {
-            let newTitle = prompt("Enter new tab title:", "Google Docs");
-            let newIcon = prompt("Enter favicon URL:", "https://upload.wikimedia.org/wikipedia/commons/6/6a/Google_Docs_2020_Logo.svg");
+        const modal = document.getElementById("cloakModal");
+        const openBtn = document.getElementById("cloakOpen");
+        const closeBtn = document.getElementById("cloakClose");
+        const applyBtn = document.getElementById("cloakApply");
+
+        openBtn.onclick = () => modal.style.display = "flex";
+        closeBtn.onclick = () => modal.style.display = "none";
+
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.getElementById('cloakTitle').value = btn.dataset.title;
+                document.getElementById('cloakIcon').value = btn.dataset.icon;
+            }
+        });
+
+        applyBtn.onclick = () => {
+            let newTitle = document.getElementById("cloakTitle").value;
+            let newIcon = document.getElementById("cloakIcon").value;
 
             if (newTitle) document.title = newTitle;
 
@@ -117,6 +211,8 @@
                 }
                 favicon.href = newIcon;
             }
+
+            modal.style.display = "none";
         }
     </script>
 
@@ -184,5 +280,6 @@
     
 </body>
 </html>
+
 
 
