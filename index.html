@@ -3,118 +3,276 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game Site UI</title>
+    <title>a4Games</title>
+
     <style>
+        :root {
+            --bg: #f4f4f4;
+            --text: #111;
+            --card: #ffffff;
+            --sidebar: #ffffff;
+            --shadow: rgba(0,0,0,0.12);
+
+            --bg-dark: #111;
+            --text-dark: #eaeaea;
+            --card-dark: #1c1c1c;
+            --sidebar-dark: #1a1a1a;
+            --shadow-dark: rgba(0,0,0,0.5);
+        }
+
+        body.dark {
+            --bg: var(--bg-dark);
+            --text: var(--text-dark);
+            --card: var(--card-dark);
+            --sidebar: var(--sidebar-dark);
+            --shadow: var(--shadow-dark);
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: #fff;
+            font-family:Arial, sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            transition: background 0.3s, color 0.3s;
+            display:flex;
         }
 
-        header {
-            padding: 20px;
-            font-size: 2rem;
-            font-weight: bold;
-            text-align: center;
-            background: #222;
+        /* SIDEBAR */
+        .sidebar {
+            width:260px;
+            height:100vh;
+            background:var(--sidebar);
+            box-shadow:0 0 20px var(--shadow);
+            padding:20px;
+            box-sizing:border-box;
+            position:fixed;
+            transition:background 0.3s;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
         }
 
-        .featured {
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-            background: #1b1b1b;
-            border-bottom: 4px solid #333;
+        .logo {
+            width:140px;
+            margin-bottom:25px;
         }
 
-        .featured h2 {
-            margin-top: 0;
-            font-size: 1.8rem;
+        .sidebar button {
+            width:100%;
+            padding:12px;
+            border:none;
+            background:#ddd;
+            border-radius:8px;
+            font-size:1rem;
+            cursor:pointer;
+            margin-bottom:10px;
+            transition:0.2s;
+        }
+        body.dark .sidebar button {
+            background:#333;
+            color:white;
+        }
+        .sidebar button:hover {
+            opacity:0.8;
         }
 
+        /* TOP BAR */
+        .topbar {
+            margin-left:260px;
+            width:calc(100% - 260px);
+            background:var(--sidebar);
+            padding:15px 25px;
+            box-shadow:0 2px 10px var(--shadow);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:sticky;
+            top:0;
+            transition:background 0.3s;
+        }
+
+        .search-bar {
+            width:300px;
+            padding:10px;
+            border-radius:8px;
+            border:none;
+            font-size:1rem;
+            background:var(--card);
+            color:var(--text);
+            box-shadow:0 0 10px var(--shadow);
+        }
+
+        .mode-toggle {
+            font-size:1.5rem;
+            cursor:pointer;
+            padding:8px;
+            border-radius:50%;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            margin-left:260px;
+            width:calc(100% - 260px);
+            padding:25px;
+        }
+
+        .section-title {
+            font-size:1.6rem;
+            margin:10px 0 15px 0;
+            font-weight:bold;
+        }
+
+        /* FEATURED */
         .featured-box {
-            width: 100%;
-            height: 200px;
-            background: #333;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #ccc;
+            width:100%;
+            height:180px;
+            background:var(--card);
+            box-shadow:0 0 20px var(--shadow);
+            border-radius:14px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:1.2rem;
+            margin-bottom:35px;
         }
 
-        .library {
-            padding: 20px;
-        }
-
-        .library h2 {
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 1.6rem;
-        }
-
+        /* GRID */
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 15px;
+            display:grid;
+            grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+            gap:20px;
         }
 
         .game-box {
-            background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
-            padding: 30px;
-            border-radius: 22px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+            background:var(--card);
+            box-shadow:0 6px 18px var(--shadow);
+            padding:20px;
+            border-radius:16px;
+            text-align:center;
+            cursor:pointer;
+            transition:transform 0.2s, box-shadow 0.2s;
+            color:var(--text);
+            text-decoration:none;
         }
 
         .game-box:hover {
-            transform: scale(1.05);
-            background: #2c2c2c;
+            transform:scale(1.05);
         }
 
         .game-box img {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 15px;
-            border-radius: 18px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.45);
+            width:140px;
+            height:140px;
+            object-fit:cover;
+            border-radius:14px;
+            margin-bottom:10px;
         }
 
         .game-title {
-            margin-top: 10px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-size:1.1rem;
+            font-weight:bold;
+        }
+
+        /* CLOAK MODAL */
+        .cloak-modal {
+            display:none;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.7);
+            backdrop-filter:blur(4px);
+            align-items:center;
+            justify-content:center;
+        }
+        .cloak-content {
+            background:var(--sidebar);
+            padding:25px;
+            width:350px;
+            border-radius:12px;
+            box-shadow:0 0 20px var(--shadow);
+            color:var(--text);
+        }
+        .cloak-content input {
+            width:100%;
+            padding:10px;
+            background:var(--card);
+            border:none;
+            border-radius:8px;
+            margin-bottom:10px;
+            color:var(--text);
+            box-shadow:0 0 12px var(--shadow);
+        }
+        .preset-btn {
+            padding:8px 12px;
+            border:none;
+            background:#777;
+            color:white;
+            border-radius:6px;
+            cursor:pointer;
+            margin-right:6px;
+        }
+        .cloak-actions {
+            display:flex;
+            justify-content:space-between;
+            margin-top:15px;
+        }
+        .cloak-actions button {
+            padding:10px 15px;
+            border:none;
+            border-radius:8px;
+            background:#888;
+            color:white;
+            cursor:pointer;
         }
     </style>
 </head>
-<body>
-    <header>My Game Site</header>
 
-    <!-- Cloak Button -->
-    <div style="text-align:center; padding:15px; background:#181818; border-bottom:3px solid #333;">
-        <button id="cloakOpen" style="padding:12px 20px; font-size:1rem; border:none; border-radius:8px; cursor:pointer; background:#3a3a3a; color:white; transition:0.2s;">
-            Cloak Page
-        </button>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <img src="logo.png" class="logo" />
+        <button id="cloakOpen">Cloak Page</button>
+        <button onclick="window.scrollTo(0,0)">Top</button>
     </div>
 
-    <!-- Cloak Popup -->
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <input type="text" id="search" class="search-bar" placeholder="Search games...">
+        <div class="mode-toggle" id="toggleMode">🌙</div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="section-title">Featured Game</div>
+        <div class="featured-box">Set featured game here</div>
+
+        <div class="section-title">Library</div>
+        <div class="grid" id="gameGrid">
+            <!-- Games auto-filter with JS -->
+            <a href="/deltarune" class="game-box"><img src="data:image/png;base64,iVBORw0KGgoAAA..." /><div class="game-title">DELTARUNE</div></a>
+            <a href="/omori" class="game-box"><img src="https://pbs.twimg.com/media/Es6jE4hWMAIXxeA.jpg" /><div class="game-title">OMORI</div></a>
+            <a href="/granny" class="game-box"><img src="https://play-lh.googleusercontent.com/yT_LBq_tyKeID..." /><div class="game-title">Granny</div></a>
+
+            <!-- You can keep all your other games below, unchanged -->
+        </div>
+    </main>
+
+    <!-- CLOAK MODAL -->
     <div id="cloakModal" class="cloak-modal">
         <div class="cloak-content">
-            <h2>Cloak Settings</h2>
+            <h2 style="text-align:center;">Cloak Settings</h2>
 
             <label>Tab Title:</label>
-            <input id="cloakTitle" type="text" placeholder="Google Docs" />
+            <input id="cloakTitle" type="text" placeholder="Google Docs">
 
             <label>Favicon URL:</label>
-            <input id="cloakIcon" type="text" placeholder="https://via.placeholder.com/64" />
+            <input id="cloakIcon" type="text" placeholder="https://example.com/icon.png">
 
             <h3>Presets</h3>
-            <button class="preset-btn" data-title="Home | Schoology" data-icon="data:image/png;base64,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">Schoology</button>
-            <button class="preset-btn" data-title="Clever | Portal" data-icon="data:image/png;base64,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">Clever</button>
+            <button class="preset-btn" data-title="Home | Schoology" data-icon="...">Schoology</button>
+            <button class="preset-btn" data-title="Clever | Portal" data-icon="...">Clever</button>
 
             <div class="cloak-actions">
                 <button id="cloakApply">Apply</button>
@@ -123,64 +281,30 @@
         </div>
     </div>
 
-    <style>
-        .cloak-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(4px);
-            align-items: center;
-            justify-content: center;
-        }
-        .cloak-content {
-            background: #222;
-            padding: 25px;
-            width: 350px;
-            border-radius: 14px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-        .cloak-content h2 {
-            margin-top: 0;
-            text-align: center;
-        }
-        .cloak-content input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            margin-bottom: 12px;
-            background: #333;
-            color: white;
-        }
-        .preset-btn {
-            padding: 8px 12px;
-            background: #444;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            margin-right: 8px;
-            cursor: pointer;
-        }
-        .cloak-actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-        .cloak-actions button {
-            padding: 10px 15px;
-            border: none;
-            background: #555;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-    </style>
-
+    <!-- JAVASCRIPT -->
     <script>
+        /* DARK/LIGHT MODE */
+        const toggleMode = document.getElementById("toggleMode");
+        toggleMode.onclick = () => {
+            document.body.classList.toggle("dark");
+            toggleMode.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+        };
+
+        /* SEARCH FILTER */
+        const searchInput = document.getElementById("search");
+        const gameGrid = document.getElementById("gameGrid");
+
+        searchInput.addEventListener("input", () => {
+            const term = searchInput.value.toLowerCase();
+            const boxes = gameGrid.querySelectorAll(".game-box");
+
+            boxes.forEach(box => {
+                const title = box.querySelector(".game-title").textContent.toLowerCase();
+                box.style.display = title.includes(term) ? "" : "none";
+            });
+        });
+
+        /* CLOAK POPUP */
         const modal = document.getElementById("cloakModal");
         const openBtn = document.getElementById("cloakOpen");
         const closeBtn = document.getElementById("cloakClose");
@@ -193,90 +317,28 @@
             btn.onclick = () => {
                 document.getElementById('cloakTitle').value = btn.dataset.title;
                 document.getElementById('cloakIcon').value = btn.dataset.icon;
-            }
+            };
         });
 
         applyBtn.onclick = () => {
-            let newTitle = document.getElementById("cloakTitle").value;
-            let newIcon = document.getElementById("cloakIcon").value;
+            let t = document.getElementById("cloakTitle").value;
+            let i = document.getElementById("cloakIcon").value;
 
-            if (newTitle) document.title = newTitle;
+            if (t) document.title = t;
 
-            if (newIcon) {
+            if (i) {
                 let favicon = document.querySelector("link[rel='icon']");
                 if (!favicon) {
                     favicon = document.createElement("link");
                     favicon.rel = "icon";
                     document.head.appendChild(favicon);
                 }
-                favicon.href = newIcon;
+                favicon.href = i;
             }
 
             modal.style.display = "none";
-        }
+        };
     </script>
 
-    <section class="featured">
-        <h2>Featured Game</h2>
-        <div class="featured-box">(Set featured game here)</div>
-    </section>
-
-    <section class="library">
-        <h2>Full Library</h2>
-        <div class="grid">
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 1</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 2</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 3</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 4</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 5</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 6</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 7</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 8</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 9</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 10</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 11</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 12</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 13</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 14</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 15</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 16</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 17</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 18</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 19</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 20</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 21</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 22</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 23</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 24</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 25</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 26</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 27</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 28</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 29</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 30</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 31</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 32</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 33</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 34</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 35</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 36</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 37</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 38</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 39</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 40</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 41</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 42</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 43</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 44</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 45</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 46</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 47</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 48</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 49</div></a>
-            <a href="https://www.google.com" class="game-box"><img src="https://via.placeholder.com/80" /><div class="game-title">Game 50</div></a>
-        </div>
-    </section>
-
-    
 </body>
 </html>
